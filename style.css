@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+section {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background-color: black;
+}
+
+h1 {
+    font-family: "Playfair Display", serif;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: white;
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    clip-path: circle(20px at var(--x, 50%) var(--y, 50%));
+
+    transition: clip-path 100ms
+}
+
+.mask h1 {
+    color: black
+}
+
+.grow {
+    clip-path: circle(100px at var(--x, 50%) var(--y, 50%));
+}

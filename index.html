@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section>
+        <h1>WHAT ARE YOU HIDING?</h1>
+    </section>
+    <section class="mask">
+        <h1>WHAT ARE YOU HIDING?</h1>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script>
+        const mask = document.querySelector('.mask')
+        const h1 = document.querySelectorAll('h1')
+        window.addEventListener('mousemove', e => {
+            const { clientX, clientY } = e
+            const x = Math.round(clientX / window.innerWidth * 100)
+            const y = Math.round(clientY / window.innerHeight * 100)
+            gsap.to(mask, {
+                '--x': `${x}%`,
+                '--y': `${y}%`,
+                ease: 'sine.out',
+                duration: .3
+            })
+
+        })
+
+        h1.forEach(h1 => {
+            h1.addEventListener('mousemove', () => {
+                mask.classList.add('grow')
+            })
+            h1.addEventListener('mouseleave', () => {
+                mask.classList.remove('grow')
+            })
+        })
+
+
+    </script>
+</body>
+
+</html>
